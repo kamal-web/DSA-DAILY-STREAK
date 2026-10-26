@@ -68,9 +68,10 @@ function isValidAnagramByFixedArray(fInput, sInput){
     let freqArr = new Array(26).fill(0);
 
     for(let i=0;i<fInput.length;i++){
-        freqArr[fInput.charCodeAt[i] - 97]++;
-        freqArr[sInput.charCodeAt[i] - 97]--;
+        freqArr[fInput.charCodeAt(i) - 97]++;
+        freqArr[sInput.charCodeAt(i) - 97]--;
     }
+    console.log('after', freqArr);
 
     return freqArr.every( count => count === 0);
 
