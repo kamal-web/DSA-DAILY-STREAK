@@ -26,8 +26,28 @@ s = "rat";
 t = "car";
 console.log(isValidAnagramBruteForce(s, t));
 
-console.log('\nisValidAnagramByMap');
+//2nd way Anagrams Bruteforce
+console.log('\nisValidAnagramByBruteforce2');
+function isValidAnagramBruteForce(fInput, sInput){
+    if(fInput.length !== sInput.length){
+        return false;
+    }
+    const sortedFInput = [...fInput].sort();
+    const sortedSInput = [...sInput].sort();
+
+    return sortedFInput.every((char, i) => char === sortedSInput[i]);
+}
+
+s = "anagram";
+t = "nagaram";
+console.log(isValidAnagramByMap(s,t));
+s = "rat";
+t = "car";
+console.log(isValidAnagramByMap(s,t));
+
+
 //Map
+console.log('\nisValidAnagramByMap');
 function isValidAnagramByMap(fInput, sInput){
     if(fInput.length !== sInput.length){
         return false;
@@ -71,7 +91,6 @@ function isValidAnagramByFixedArray(fInput, sInput){
         freqArr[fInput.charCodeAt(i) - 97]++;
         freqArr[sInput.charCodeAt(i) - 97]--;
     }
-    console.log('after', freqArr);
 
     return freqArr.every( count => count === 0);
 
