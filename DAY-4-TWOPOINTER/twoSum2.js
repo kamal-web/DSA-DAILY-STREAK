@@ -75,3 +75,29 @@ console.log('indexes of two sum', twoSumWithTwoPointer(numbers, target));
 //complexity
 // Time:- O(n),
 //space:- O(1),
+
+//HashMap
+console.log('----HASHMAP----');
+function twoSumWithHashMap(arr, target){
+    const complementMap = new Map();
+    for(let i=0;i<arr.length;i++){
+        if(complementMap.has(arr[i])){
+            return [(complementMap.get(arr[i]))+1, i+1]
+        }
+        let complement = target - arr[i];
+        complementMap.set(complement, i);
+    }
+    return 'not found';
+}
+
+numbers = [2,7,11,15], target = 9;
+console.log('indexes of two sum', twoSumWithHashMap(numbers, target));
+numbers = [2,3,4], target = 6;
+console.log('indexes of two sum', twoSumWithHashMap(numbers, target));
+numbers = [-1,0], target = -1;
+console.log('indexes of two sum', twoSumWithHashMap(numbers, target));
+//complexity
+// Time:- O(n),
+//space:- O(n),
+
+//Since we have O(n) space complexity with HASHMAP solution we will prefer TWO POINTER solution for TWO SUM problem.
