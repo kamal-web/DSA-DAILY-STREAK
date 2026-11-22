@@ -59,10 +59,14 @@ function isValidAnagramByMap(fInput, sInput){
     }
 
     for(const chr of sInput){
-        if(frequencyMap.get(chr) === 1){
+        if(!frequencyMap.has(chr)){
+            return false;
+        }
+        let count = frequencyMap.get(chr);
+        if(count === 1){
             frequencyMap.delete(chr);
         } else{
-            frequencyMap.set(chr, (frequencyMap.get(chr)) - 1);
+            frequencyMap.set(chr, count - 1);
         }
         
     }
